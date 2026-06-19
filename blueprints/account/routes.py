@@ -12,7 +12,8 @@ account_bp = Blueprint(
 # account main --------------------------------------------------------------
 @account_bp.route("/", methods=["GET"])
 def account_service_main():
-    return render_template("account/account_main.html")
+    id = session.get("signinedMemberId")
+    return render_template("account/account_main.html", id=id)
 
 
 # signup --------------------------------------------------------------------
@@ -63,7 +64,8 @@ def signin_confirm():
 
     if mId in members and members[mId]["mPw"] == mPw:
         session["signinedMemberId"] = mId
-        return render_template("/account/signin_result.html")
+        return redirect("/account/")
+        # return render_template("/account/signin_result.html")
 
     return redirect("/account/signin_form?result=fail")
 

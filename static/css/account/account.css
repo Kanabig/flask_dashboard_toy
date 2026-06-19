@@ -1,4 +1,12 @@
 #signup_wrap,
-#signin_wrap {
+#signin_wrap,
+#account_main_wrap {
   text-align: center;
+}
+
+#signup_wrap .signup_form,
+#signin_wrap .signin_form,
+#account_main_wrap {
+  width: 1000px;
+  margin: 50px auto;
 }

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, session
 from utils.json_manager import load_members, save_members
+from utils.timestamper import get_current_time_stamp_formated
 
 member_bp = Blueprint(
     "member",
@@ -8,13 +9,18 @@ member_bp = Blueprint(
 )
 
 
-# signup form
+# account main --------------------------------------------------------------
+@member_bp.route("/", methods=["GET"])
+def member_service_main():
+    return render_template("member/member_main.html")
+
+
+# signup --------------------------------------------------------------------
 @member_bp.route("/signup_form", methods=["GET"])
 def signup_form():
     return render_template("member/signup_form.html")
 
 
-# signup confirm
 @member_bp.route("/signup_confirm", methods=["POST"])
 def signup_confirm():
     mId = request.form["mId"]
@@ -32,6 +38,8 @@ def signup_confirm():
         "mPw": mPw,
         "mMail": mMail,
         "mPhone": mPhone,
+        "reg_date": get_current_time_stamp_formated(),
+        "mod_date": get_current_time_stamp_formated(),
     }
 
     save_members(members)
@@ -39,14 +47,13 @@ def signup_confirm():
     return render_template("member/signup_result.html", result="OK")
 
 
-# signin form
+# signin --------------------------------------------------------------------
 @member_bp.route("/signin_form", methods=["GET"])
 def signin_form():
     result = request.args.get("result")
     return render_template("member/signin_form.html", result=result)
 
 
-# signin confirm
 @member_bp.route("/signin_confirm", methods=["POST"])
 def signin_confirm():
     mId = request.form["mId"]
@@ -61,7 +68,7 @@ def signin_confirm():
     return redirect("/member/signin_form?result=fail")
 
 
-# signout confirm
+# signout -------------------------------------------------------------------
 @member_bp.route("/signout_confirm", methods=["GET"])
 def signout_confirm():
     session.clear()

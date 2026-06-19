@@ -25,3 +25,9 @@ def save_json(file, json_data):
             json.dump(json_data, f, ensure_ascii=False, indent=4)
     except Exception as e:
         print(e)
+
+
+# # 사용법
+# if __name__ == "__main__":
+#     accounts = load_json(ACCOUNT_FILE)
+#     save_json(ACCOUNT_FILE, accounts)

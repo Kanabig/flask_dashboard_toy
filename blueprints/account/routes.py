@@ -8,6 +8,14 @@ account_bp = Blueprint(
     url_prefix="/account",
 )
 
+KEY_ID = "id"
+KEY_PW = "pw"
+KEY_MAIL = "mail"
+KEY_PHONE = "phone"
+KEY_REG_DATE = "reg_date"
+KEY_MOD_DATE = "mod_date"
+KEY_SESSION_ID = "signinedMemberId"
+
 
 # account main --------------------------------------------------------------
 @account_bp.route("/", methods=["GET"])
@@ -24,23 +32,23 @@ def signup_form():
 
 @account_bp.route("/signup_confirm", methods=["POST"])
 def signup_confirm():
-    mId = request.form["mId"]
-    mPw = request.form["mPw"]
-    mMail = request.form["mMail"]
-    mPhone = request.form["mPhone"]
+    id = request.form["mId"]
+    pw = request.form["mPw"]
+    mail = request.form["mMail"]
+    phone = request.form["mPhone"]
 
     account = load_json(ACCOUNT_FILE)
 
-    if mId in account:
+    if id in account:
         return render_template("account/signup_result.html", result="NG")
 
-    account[mId] = {
-        "mId": mId,
-        "mPw": mPw,
-        "mMail": mMail,
-        "mPhone": mPhone,
-        "reg_date": get_current_time_stamp_formated(),
-        "mod_date": get_current_time_stamp_formated(),
+    account[id] = {
+        KEY_ID: id,
+        KEY_PW: pw,
+        KEY_MAIL: mail,
+        KEY_PHONE: phone,
+        KEY_REG_DATE: get_current_time_stamp_formated(),
+        KEY_MOD_DATE: get_current_time_stamp_formated(),
     }
 
     save_json(ACCOUNT_FILE, account)
@@ -57,13 +65,13 @@ def signin_form():
 
 @account_bp.route("/signin_confirm", methods=["POST"])
 def signin_confirm():
-    mId = request.form["mId"]
-    mPw = request.form["mPw"]
+    id = request.form["mId"]
+    pw = request.form["mPw"]
 
     members = load_json(ACCOUNT_FILE)
 
-    if mId in members and members[mId]["mPw"] == mPw:
-        session["signinedMemberId"] = mId
+    if id in members and members[id][KEY_PW] == pw:
+        session[KEY_SESSION_ID] = id
         return redirect("/account/")
         # return render_template("/account/signin_result.html")
 

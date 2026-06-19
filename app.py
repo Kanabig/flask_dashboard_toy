@@ -1,12 +1,12 @@
 from flask import Flask, render_template
-from blueprints.member.routes import member_bp
+from blueprints.account.routes import account_bp
 
 # essentials
 app = Flask(__name__)
 app.secret_key = "KLASFkjduiqw18asdBCbnkpq-2098418"
 
 # bluprints
-app.register_blueprint(member_bp)
+app.register_blueprint(account_bp)
 
 
 # entrypoint

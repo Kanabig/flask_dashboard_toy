@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <title>Member service</title>
     <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" />
-    <link href="{{ url_for('static', filename='css/member/member.css') }}" rel="stylesheet" />
-    <script src="{{ url_for('static', filename='js/member.js')}}"></script>
+    <link href="{{ url_for('static', filename='css/account/account.css') }}" rel="stylesheet" />
+    <script src="{{ url_for('static', filename='js/account.js')}}"></script>
   </head>
   <body>
     {% include 'include/header.html' %} {% include 'include/nav.html' %}
@@ -16,7 +16,7 @@
       {% endif %}
 
       <div class="signin_form">
-        <form action="/member/signin_confirm" method="POST" name="signin_form">
+        <form action="/account/signin_confirm" method="POST" name="signin_form">
           <input class="input_basic" type="text" , name="mId" , placeholder="id: " /> <br />
           <input class="input_basic" type="password" , name="mPw" , placeholder="pw: " /> <br />
           <input class="input_button_basic_130" type="button" value="SIGN IN" onclick="signInForm()" />

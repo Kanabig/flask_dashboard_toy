@@ -2,7 +2,7 @@ import json
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-FILE = os.path.join(BASE_DIR, "json", "members.json")
+FILE = os.path.join(BASE_DIR, "json", "accounts.json")
 
 
 def load_json():

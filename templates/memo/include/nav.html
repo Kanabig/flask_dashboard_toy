@@ -1,18 +1,18 @@
-<link href="{{ url_for('static', filename='css/include/nav.css') }}" rel="stylesheet" />
+link href="{{ url_for('static', filename='css/include/nav.css') }}" rel="stylesheet" />
 
 <nav>
   {% if not session.get("signinedMemberId") %}
   <div class="nav_wrap">
     <a href="/">Home</a>
     |
-    <a href="/account/">Account</a>
+    <a href="/member/">Member</a>
   </div>
 
   {% else %}
   <div class="nav_wrap">
     <a href="/">Home</a>
     |
-    <a href="/account/">Account</a>
+    <a href="/member/">Member</a>
     |
     <a href="/bank/">Bank</a>
     |

@@ -1,19 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>MEMO_SERVICE</title>
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+
     <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" />
     <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" />
-  </head>
-  <body>
+</head>
+<body>
     {% include 'include/header.html' %} {% include 'include/nav.html' %}
 
     <article>
-      <!-- <div class="index">
-        <img src="{{ url_for('static', filename='img/spaceship.jpg' ) }}" />
-      </div> -->
-      <p>this is memo page</p>
+      <div class="todolist">
+        <img src="{{ url_for('static', filename='img/' ) }}" />
+      </div>
     </article>
 
     {% include 'include/footer.html' %}

@@ -1,39 +1,39 @@
 from flask import Blueprint, render_template, request, redirect, session
-from utils.json_manager import load_json, save_json
+from utils.json_manager import load_json, save_json, ACCOUNT_FILE
 from utils.timestamper import get_current_time_stamp_formated
 
-member_bp = Blueprint(
-    "member",
+account_bp = Blueprint(
+    "account",
     __name__,
-    url_prefix="/member",
+    url_prefix="/account",
 )
 
 
 # account main --------------------------------------------------------------
-@member_bp.route("/", methods=["GET"])
-def member_service_main():
-    return render_template("member/member_main.html")
+@account_bp.route("/", methods=["GET"])
+def account_service_main():
+    return render_template("account/account_main.html")
 
 
 # signup --------------------------------------------------------------------
-@member_bp.route("/signup_form", methods=["GET"])
+@account_bp.route("/signup_form", methods=["GET"])
 def signup_form():
-    return render_template("member/signup_form.html")
+    return render_template("account/signup_form.html")
 
 
-@member_bp.route("/signup_confirm", methods=["POST"])
+@account_bp.route("/signup_confirm", methods=["POST"])
 def signup_confirm():
     mId = request.form["mId"]
     mPw = request.form["mPw"]
     mMail = request.form["mMail"]
     mPhone = request.form["mPhone"]
 
-    members = load_json()
+    account = load_json(ACCOUNT_FILE)
 
-    if mId in members:
-        return render_template("member/signup_result.html", result="NG")
+    if mId in account:
+        return render_template("account/signup_result.html", result="NG")
 
-    members[mId] = {
+    account[mId] = {
         "mId": mId,
         "mPw": mPw,
         "mMail": mMail,
@@ -42,34 +42,34 @@ def signup_confirm():
         "mod_date": get_current_time_stamp_formated(),
     }
 
-    save_json(members)
+    save_json(ACCOUNT_FILE, account)
 
-    return render_template("member/signup_result.html", result="OK")
+    return render_template("account/signup_result.html", result="OK")
 
 
 # signin --------------------------------------------------------------------
-@member_bp.route("/signin_form", methods=["GET"])
+@account_bp.route("/signin_form", methods=["GET"])
 def signin_form():
     result = request.args.get("result")
-    return render_template("member/signin_form.html", result=result)
+    return render_template("account/signin_form.html", result=result)
 
 
-@member_bp.route("/signin_confirm", methods=["POST"])
+@account_bp.route("/signin_confirm", methods=["POST"])
 def signin_confirm():
     mId = request.form["mId"]
     mPw = request.form["mPw"]
 
-    members = load_json()
+    members = load_json(ACCOUNT_FILE)
 
     if mId in members and members[mId]["mPw"] == mPw:
         session["signinedMemberId"] = mId
-        return render_template("/member/signin_result.html")
+        return render_template("/account/signin_result.html")
 
-    return redirect("/member/signin_form?result=fail")
+    return redirect("/account/signin_form?result=fail")
 
 
 # signout -------------------------------------------------------------------
-@member_bp.route("/signout_confirm", methods=["GET"])
+@account_bp.route("/signout_confirm", methods=["GET"])
 def signout_confirm():
     session.clear()
     return redirect("/")

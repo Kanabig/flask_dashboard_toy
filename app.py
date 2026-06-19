@@ -1,13 +1,17 @@
 from flask import Flask, render_template
+<<<<<<< HEAD
 from blueprints.member.routes import member_bp
 from blueprints.bank.routes import bank_bp
+=======
+from blueprints.account.routes import account_bp
+>>>>>>> d71108042a4a7803b5f684ed0fd5d46ced29197f
 
 # essentials
 app = Flask(__name__)
 app.secret_key = "KLASFkjduiqw18asdBCbnkpq-2098418"
 
 # bluprints
-app.register_blueprint(member_bp)
+app.register_blueprint(account_bp)
 
 # bank
 app.register_blueprint(bank_bp)

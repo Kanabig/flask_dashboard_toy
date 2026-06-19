@@ -1,0 +1,24 @@
+<link href="{{ url_for('static', filename='css/include/nav.css') }}" rel="stylesheet" />
+
+<nav>
+  {% if not session.get("signinedMemberId") %}
+  <div class="nav_wrap">
+    <a href="/">Home</a>
+    |
+    <a href="/member/signup_form">Sign-Up</a>
+    |
+    <a href="/member/signin_form">Sign-In</a>
+  </div>
+
+  {% else %}
+  <div class="nav_wrap">
+    <a href="/">Home</a>
+    |
+    <a href="/member/signout_confirm">Sign-Out</a>
+    |
+    <a href="/member/modify_form">Modify</a>
+    |
+    <a href="/member/delete_confirm">Delete</a>
+  </div>
+  {% endif %}
+</nav>

@@ -1,0 +1,13 @@
+/* nav start */
+nav > div.nav_wrap {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid #dadada;
+}
+
+nav > div.nav_wrap a {
+  padding: 0 10px;
+}
+/* nav end */

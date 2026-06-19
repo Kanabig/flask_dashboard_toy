@@ -17,6 +17,6 @@ def load_json():
 def save_json(json_data):
     try:
         with open(FILE, "w", encoding="utf-8") as f:
-            return json.dump(json_data, f, ensure_ascii=False, indent=4)
+            json.dump(json_data, f, ensure_ascii=False, indent=4)
     except Exception as e:
         print(e)

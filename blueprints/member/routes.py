@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, session
-from utils.json_manager import load_members, save_members
+from utils.json_manager import load_json, save_json
 from utils.timestamper import get_current_time_stamp_formated
 
 member_bp = Blueprint(
@@ -28,7 +28,7 @@ def signup_confirm():
     mMail = request.form["mMail"]
     mPhone = request.form["mPhone"]
 
-    members = load_members()
+    members = load_json()
 
     if mId in members:
         return render_template("member/signup_result.html", result="NG")
@@ -42,7 +42,7 @@ def signup_confirm():
         "mod_date": get_current_time_stamp_formated(),
     }
 
-    save_members(members)
+    save_json(members)
 
     return render_template("member/signup_result.html", result="OK")
 
@@ -59,7 +59,7 @@ def signin_confirm():
     mId = request.form["mId"]
     mPw = request.form["mPw"]
 
-    members = load_members()
+    members = load_json()
 
     if mId in members and members[mId]["mPw"] == mPw:
         session["signinedMemberId"] = mId

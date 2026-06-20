@@ -4,17 +4,25 @@
     <meta charset="UTF-8" />
     <title>MEMO_SERVICE</title>
     <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" />
-    <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/memo/memo.css') }}" rel="stylesheet" />
   </head>
   <body>
-    {% include 'include/header.html' %} {% include 'include/nav.html' %}
+    {% include 'memo/include/header.html' %} {% include 'memo/include/nav.html' %}
+   
 
     <article>
       <!-- <div class="index">
         <img src="{{ url_for('static', filename='img/spaceship.jpg' ) }}" />
       </div> -->
-      <p>this is memo page</p>
+      <p>
+        <h3>this is memo page. What is regarding?</h3>
+      </p>
     </article>
+
+    <form>
+  
+    </form>
+    
 
     {% include 'include/footer.html' %}
   </body>

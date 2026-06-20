@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MEMO_SERVICE</title>
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/memo/memo.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    {% include 'memo/include/header.html' %} {% include 'memo/include/nav.html' %}
+
+
+    <form action="/memo/write" method="post">
+        <textarea name="content"></textarea>
+    </form>
+    
+
+    {% include 'include/footer.html' %}
+  </body>
+</html>

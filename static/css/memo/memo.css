@@ -1,0 +1,11 @@
+#div.memo_form {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid #dadada;
+}
+
+#div.memo_wrap a {
+  padding: 0px 10px;
+}

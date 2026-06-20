@@ -1,26 +1,17 @@
-link href="{{ url_for('static', filename='css/include/nav.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', filename='css/include/nav.css') }}" rel="stylesheet" />
+
+
 
 <nav>
-  {% if not session.get("signinedMemberId") %}
   <div class="nav_wrap">
-    <a href="/">Home</a>
+  <a href="/">Memo</a>
     |
-    <a href="/member/">Member</a>
+    <a href="/memo/write">Write</a>
+    |
+    <a href="/memo/read">Read</a>
+    |
+    <a href="/memo/update">Update</a>
+    |
+    <a href="/memo/delete">Delete</a>
   </div>
-
-  {% else %}
-  <div class="nav_wrap">
-    <a href="/">Home</a>
-    |
-    <a href="/member/">Member</a>
-    |
-    <a href="/bank/">Bank</a>
-    |
-    <a href="/diary/">Diary</a>
-    |
-    <a href="/memo/">Memo</a>
-    |
-    <a href="/todo/">Todo</a>
-  </div>
-  {% endif %}
 </nav>

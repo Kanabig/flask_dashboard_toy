@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BANK AUTH</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bank/auth.css') }}">
+</head>
+<body>
+    <div id="auth_wrap">
+        <h1>BANK</h1>
+        <p>계좌 비밀번호</p>
+        {% if error %}
+        <div class="error">비밀번호 틀림</div>
+        {% endif %}
+        <form method="POST">
+            <input type="hidden" name="password" id="password">
+            <div class="pw_view">{% for i in range(6) %}
+            <div class="dot"></div>
+            {% endfor %}
+        </div>
+        <div class="keypad">{% for i in range(1,10) %}
+        <button type="button" onclick="addPw('{{ i }}')">{{ i }}</button>
+        {% endfor %}
+        <button type="button" onclick="removePw()">
+            ←
+        </button>
+        <button type="button" onclick="addPw('0')">
+            0
+        </button>
+        <button>확인</button>
+        </div>
+        </form>
+    </div>
+    <script>
+        const pw=document.getElementById('password')
+        const dots=document.querySelectorAll('.dot')
+        function draw(){dots.forEach(d=>d.classList.remove('active'))
+        for(let i=0;i<pw.value.length;i++){dots[i].classList.add('active')}}
+        function addPw(v){if(pw.value.length<6)
+            {pw.value+=v 
+                draw()}}
+        function removePw()
+        {pw.value=pw.value.slice(0, -1)
+            draw()}
+    </script>
+</body>
+</html>

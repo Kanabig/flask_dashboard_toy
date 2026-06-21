@@ -7,11 +7,14 @@
     <link href="{{ url_for('static', filename='css/account/account.css') }}" rel="stylesheet" />
   </head>
   <body>
-    {% include 'include/header.html' %} {% include 'include/nav.html' %}
+    {% include 'include/header.html' %} {% include 'account/include/nav.html' %}
 
-    <article id="signup_wrap">
-      <div class="signup_result">
-        <h3>{% if result == True %} Sign Up Success {% else %} Sign Up Fail {% endif %}</h3>
+    <article id="delete_wrap">
+      <div class="delete_result">
+        <h3>Delete account for {{ id }}?</h3>
+        <form action="{{ url_for('account.delete_confirm') }}" method="POST">
+          <input class="input_button_basic_130" type="submit" value="YES" />
+        </form>
       </div>
     </article>
 

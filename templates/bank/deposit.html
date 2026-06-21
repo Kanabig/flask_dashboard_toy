@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>입금</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bank/deposit.css') }}">
+</head>
+<body>
+    <div id="deposit_wrap">
+
+        <h1> 입금 정보 </h1>
+
+        <form method="POST">
+            <div class="row">
+                <label>보낸 은행</label>
+                <select name="bank">
+                    <option>DW은행</option>
+
+                    <option>신라</option>
+
+                    <option>kr민국</option>
+
+                    <option>농업협회</option>
+                </select>
+            </div>
+            <div class="row">
+                <label>보낸 사람</label>
+                <input type="text" name="sender" placeholder="이름">
+            </div>
+            <div class="row">
+                <label>입금 금액</label>
+                <input type="number" name="money" placeholder="금액">
+            </div>
+            <div class="row">
+                <label>입금 내용</label>
+                <input type="text" name="memo" placeholder="내용">
+            </div>
+
+            <button> 입금하기</button>
+        </form>
+    </div>
+</body>
+</html>

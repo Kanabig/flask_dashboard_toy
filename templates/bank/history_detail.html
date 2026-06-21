@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>거래 상세</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bank/history_detail.css') }}">
+</head>
+<body>
+    <div id="wrap">
+        <a href="/bank/history">← 거래내역</a>
+        <h1>거래상세</h1>
+        <div class="card">
+            <p>거래종류</p>
+            <h2>{{ history.type }}</h2>
+            <p>은행</p>
+            <div>{{ history.bank }}</div>
+            <p>금액</p>
+            <div>{{ "{:,}".format(history.money) }}원</div>
+            <p>내용</p>
+            <div>{{ history.memo }}</div>
+            <p>거래 시간</p>
+            <div>{{ history.date }}</div>
+            <p>현재 잔액</p>
+            <div>{{ "{:,}".format(balance) }}원</div>
+        </div>
+    </div>
+</body>
+</html>

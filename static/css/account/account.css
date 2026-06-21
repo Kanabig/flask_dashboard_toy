@@ -1,12 +1,23 @@
 #signup_wrap,
 #signin_wrap,
-#account_main_wrap {
+#account_main_wrap,
+#delete_wrap,
+#modify_wrap,
+#signup_wrap {
   text-align: center;
 }
 
 #signup_wrap .signup_form,
 #signin_wrap .signin_form,
+#modify_wrap .modify_form,
 #account_main_wrap {
   width: 1000px;
+  margin: 50px auto;
+}
+
+#signup_wrap div.signup_result h3,
+#signin_wrap p.signin_result,
+#delete_wrap div.delete_result h3,
+#delete_wrap div.delete_result form {
   margin: 50px auto;
 }

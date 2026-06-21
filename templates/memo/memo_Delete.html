@@ -10,8 +10,10 @@
     {% include 'memo/include/header.html' %} {% include 'memo/include/nav.html' %}
 
 
-    <form action="/memo/write" method="post">
-        <textarea name="content"></textarea>
+    <form action="/memo/delete" method="post">
+      <input type="number" min="0" max="2" name="memo_id" placeholder="삭제할 번호 입력" required >
+      <button type="submit">delete</button>
+      <button type="reset">reset</button>
     </form>
     
 

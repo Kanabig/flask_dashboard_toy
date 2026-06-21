@@ -12,16 +12,16 @@
 <body>
     {% include 'include/header.html' %} {% include 'include/nav.html' %}
 
-    <article>
-      <div class="index">
-        <form action="todo_write_form">
+    <article id="todo_write_wrap">
+      <div class="todo_write_form">
+        <form action="/todolist/todo_write_form" method="get" name="todo_write_form">
             <input class="input_basic" type="text" name="content" placeholder="Input Todo">
             <br>
             <input class="input_basic" type="date" name="expired_date">
             <br>
-            <input class="radio_basic" type="radio" name="complete" value="Completed">
+            <input class="radio_basic" type="radio" name="complete" value="Completed">Completed
             <br>
-            <input class="radio_basic" type="radio" name="complete" value="Not Completed">
+            <input class="radio_basic" type="radio" name="complete" value="Not Completed">Not Completed
             <br>
             <input class="input_button_basic_130" type="button" value="WRITE" onselect="todoWriteForm();">
             <input class="input_button_basic_130" type="reset" value="RESET">

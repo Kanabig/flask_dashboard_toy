@@ -10,11 +10,13 @@
     {% include 'memo/include/header.html' %} {% include 'memo/include/nav.html' %}
 
 
-    <form action="/memo/write" method="post">
-        <textarea name="content"></textarea>
+    <form action="/memo/update" method="post">
+      <input type="number" min="0" max="2" name="memo_id" placeholder="수정할 번호 입력" required >
+      <textarea name="content" placeholder="enter new memo" required></textarea>
+      <button type="submit">modify</button>
+      <button type="reset">reset</button>
     </form>
     
-
     {% include 'include/footer.html' %}
   </body>
 </html>

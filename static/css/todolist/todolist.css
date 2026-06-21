@@ -1,0 +1,48 @@
+/* ARTICLE START */
+/* todo_write */
+#todo_write_wrap .todo_write_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#todo_write_wrap .todo_write_result {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* todo_read */
+#todo_read_wrap .todo_read_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* todo_modify */
+#todo_modify_wrap .todo_modify_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#todo_modify_wrap .todo_modify_result {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* DELETE */
+#todo_delete_wrap .todo_delete_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#todo_delete_wrap .todo_delete_result {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* ARTICLE END */

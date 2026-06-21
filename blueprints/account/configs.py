@@ -1,0 +1,6 @@
+KEY_ID = "id"
+KEY_PW = "pw"
+KEY_MAIL = "mail"
+KEY_PHONE = "phone"
+KEY_REG_DATE = "reg_date"
+KEY_MOD_DATE = "mod_date"

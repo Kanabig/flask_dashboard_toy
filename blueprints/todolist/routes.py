@@ -8,6 +8,11 @@ todolist_bp = Blueprint(
     url_prefix="/todolist",
 )
 
+# todolist main
+@todolist_bp.route("/", methods=["GET"])
+def todolist_service_main():
+    return render_template("todolist/todolist_service_main.html")
+
 
 # todo_write_form
 @todolist_bp.route("/todo_write_form", methods=["GET"])

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MEMO_READ</title>
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/memo/memo.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    {% include 'memo/include/header.html' %} {% include 'memo/include/nav.html' %}
+
+
+   <h2>내 메모 목록</h2>
+   {% if memos %}
+       {% for memo in memos %}
+           <div>
+            <h3>{{loop.index}}번 메모</h3>
+            <p>{{loop.index}}</p>
+            <p>내용: {{memo.content}}</p>
+            <br>
+            <p>작성일: {{memo.reg_date}}</p>
+            <br>
+            <p>수정일: {{memo.mod_date}}</p>
+           </div>
+       {% endfor %}
+   {% else %}
+       <p>등록된 메모 없음</p>
+   {% endif %}
+
+    {% include 'include/footer.html' %}
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>거래내역</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bank/history.css') }}">
+</head>
+<body>
+    <div id="history_wrap">
+        <a href="/bank/">
+            ← 돌아가기
+        </a>
+        <h1>거래내역</h1>
+
+        {% if histories %}
+        {% for item in histories %}
+
+        <a class="history_link"href="/bank/history/{{ loop.index0 }}">
+
+        <div class="history">
+            <div>
+                <h2>{{ item.type }}</h2>
+                {% if item.type=="입금" %}
+                <p>{{ item.sender }}</p>
+                {% else %}
+                <p>{{ item.receiver }}</p>
+                {% endif %}
+                <p>{{ item.memo }}</p>
+                {% if item.date %}
+                <p class="date">
+                {{ item.date }}
+                </p>
+                {% endif %}
+            </div>
+            <div>
+                {% if item.type=="입금" %}
+                <span class="plus">+{{ "{:,}".format(item.money) }}원</span>
+                {% else %}
+                <span class="minus">-{{ "{:,}".format(item.money) }}원</span>
+                {% endif %}
+            </div>
+        </div>
+        </a>
+        {% endfor %}
+        {% else %}
+        거래내역 없음
+        {% endif %}
+    </div>
+</body>
+</html>

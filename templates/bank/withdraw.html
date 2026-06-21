@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출금</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bank/deposit.css') }}">
+</head>
+<body>
+    <div id="deposit_wrap">
+        <h1>출금</h1>
+
+        <div class="balance">
+            현재 잔액
+            <br>
+            ₩ {{ account.balance }}
+        </div>
+        <form method="POST">
+            <div class="row">
+                <label>받는 사람</label>
+                <input type="text" name="receiver">
+            </div>
+            <div class="row">
+                <label>출금 금액</label>
+                <input type="number" name="money">
+            </div>
+            <div class="row">
+                <label>출금 사유</label>
+                <input type="text" name="memo">
+            </div>
+            <button>출금 완료</button>
+        </form>
+    </div>
+</body>
+</html>

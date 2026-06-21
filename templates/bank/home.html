@@ -16,10 +16,94 @@
             </a>
 
             <h1>
-                BANK
+                DW BANK
             </h1>
         </div>
-        <div class="">
+        <!-- 계좌 -->
+        <div class="account">
+            <div class="account_number">
+
+                계좌번호 {{ account.accountNo }}
+
+            </div>
+            <div class="balance">
+
+                {{ "{:,}".format(account.balance) }}원
+
+            </div>
+
+            <!-- 메뉴 -->
+            <div class="menu">
+
+                <a href="/bank/deposit">
+                    <button>
+                        입금
+                    </button>
+                </a>
+                <a href="/bank/withdraw">
+                    <button>출금</button>
+                </a>
+                <a href="/bank/history">
+                    <button>거래내역</button>
+                </a>
+                <a href="/bank/send">
+                    <button>송금</button>
+                </a>
+            </div>
+            <div class="history">
+                <h2>최근 거래</h2>
+
+                {% if account.history %}
+                {% for item in account.history[:2] %}
+
+                <div class="history_item">
+                    <div class="history_info">
+                        <strong>{{ item.type }}</strong>
+                        <p>
+                            {% if item.type=="입금" %}
+                                {{ item.sender }}
+                            {% else %}
+                                {{ item.receiver }}
+                            {% endif %}
+                            ·
+                            {{ item.bank }}
+                        </p>
+                        <p>
+                            {{ item.memo }}
+                        </p>
+                        <p class="date">
+                            {{ item.date }}
+                        </p>
+                    </div>
+                    <div class="history_money">
+
+                        {% if item.type=="입금" %}
+
+                        <span class="plus">+{{ "{:,}".format(item.money) }}원</span>
+
+                        {% else %}
+
+                        <span class="minus">-{{ "{:,}".format(item.money) }}원</span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+                {% else %}
+
+                    <p class="empty">
+
+                        거래내역이 없습니다.
+
+                    </p>
+
+                {% endif %}
+
+            </div>
 
         </div>
     </div>

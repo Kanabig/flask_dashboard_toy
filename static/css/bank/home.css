@@ -1,0 +1,185 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f5f6fa;
+}
+
+
+/* 전체 */
+
+#bank_wrap{
+    width:1000px;
+    margin:50px auto;
+}
+
+
+/* 상단 */
+
+.header{
+    position:relative;
+    height:100px;
+    display:flex;
+    align-items:center;
+}
+
+.back{
+    position:absolute;
+    left:0;
+    font-size:34px;
+    text-decoration:none;
+    color:black;
+}
+
+.header h1{
+    position:absolute;
+    left:50%;
+    transform:
+    translateX(-50%);
+    font-size:72px;
+    font-weight:900;
+    letter-spacing:8px;
+}
+
+
+/* 계좌 */
+
+.account{
+    background:white;
+    padding:60px;
+    border-radius:25px;
+    box-shadow:
+    0 5px 20px
+    rgba(0,0,0,.1);
+}
+
+
+.account_title{
+    font-size:22px;
+    color:gray;
+}
+
+
+.account_number{
+    margin-top:20px;
+    font-size:28px;
+    color: #666;
+}
+
+
+.balance{
+    margin-top:40px;
+    font-size:88px;
+    font-weight:800;
+    display:flex;
+    justify-content:flex-end;
+    text-align:right;
+    padding-right:40px;
+}
+
+
+/* 메뉴 */
+.menu{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:
+    1fr 1fr;
+    gap:20px;
+}
+
+.menu a{
+    text-decoration:none;
+}
+
+.menu button{
+    width:100%;
+    height:140px;
+    font-size:30px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    background:white;
+    box-shadow:
+    0 5px 15px
+    rgba(0,0,0,.08);
+}
+
+
+.menu button:hover{
+    transform:
+    translateY(-5px);
+    transition:.2s;
+}
+
+/* 최근 거래 */
+
+.history{
+    margin-top:40px;
+    background:white;
+    padding:40px;
+    border-radius:25px;
+}
+
+.history h2{
+    font-size:30px;
+    margin-bottom:30px;
+}
+
+.history_item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:30px 0;
+    border-bottom:
+    1px solid #eee;
+}
+
+.history_info{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.history_money{
+    min-width:220px;
+    text-align:right;
+}
+
+.history_item strong{
+    font-size:24px;
+}
+
+.history_item p{
+    margin-top:8px;
+    color:#777;
+}
+
+.plus{
+    font-size:30px;
+    font-weight:bold;
+    color:#2d67ff;
+}
+
+.empty{
+    font-size:22px;
+    color:#999;
+}
+
+.minus{
+    font-size:30px;
+    font-weight:bold;
+    color:red;
+}
+
+.send_lock{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 20px;
+    border-radius:12px;
+    background:black;
+    color:white;
+    text-decoration:none;
+}

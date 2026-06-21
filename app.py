@@ -3,6 +3,8 @@ from blueprints.account.routes import account_bp
 from blueprints.diary.routes import diary_bp
 from blueprints.memo.routes import memo_bp
 from blueprints.bank.routes import bank_bp
+from blueprints.todolist.routes import todolist_bp
+
 # essentials
 app = Flask(__name__)
 app.secret_key = "KLASFkjduiqw18asdBCbnkpq-2098418"
@@ -12,7 +14,7 @@ app.register_blueprint(memo_bp)
 app.register_blueprint(account_bp)
 app.register_blueprint(diary_bp)
 app.register_blueprint(bank_bp)
-
+app.register_blueprint(todolist_bp)
 
 # entrypoint
 @app.route("/", methods=["GET"])

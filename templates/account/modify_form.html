@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Member service</title>
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/account/account.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    {% include 'include/header.html' %} {% include 'account/include/nav.html' %}
+
+    <article id="modify_wrap">
+      <div class="modify_form">
+        <form action="{{ url_for('account.modify_confirm') }}" method="POST" name="modify_form">
+          <input class="input_basic" type="text" name="mId" value="{{ account.id }}" readonly disabled /> <br />
+          <input class="input_basic" type="password" name="mPw" value="{{ account.pw }}" /> <br />
+          <input class="input_basic" type="email" name="mMail" value="{{ account.mail }}" /> <br />
+          <input class="input_basic" type="text" name="mPhone" value="{{ account.phone }}" /> <br />
+          <input class="input_button_basic_130" type="submit" value="UPDATE" />
+          <input class="input_button_basic_130" type="reset" value="RESET" />
+        </form>
+      </div>
+    </article>
+
+    {% include 'include/footer.html' %}
+  </body>
+</html>

@@ -1,0 +1,31 @@
+#div.memo_form {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid #dadada;
+}
+
+#div.memo_wrap a {
+  padding: 0px 10px;
+}
+
+textarea {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  margin-left: 10px;
+}
+
+button {
+  width: 50%;
+  max-width: 100px;
+  height: 30px;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  
+}
+
+.memo h3 {
+  text-align: center;
+}

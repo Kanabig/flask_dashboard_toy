@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MEMO_SERVICE</title>
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/memo/memo.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    {% include 'memo/include/header.html' %} {% include 'memo/include/nav.html' %}
+   
+
+    <article class="memo">
+      <div class="index">
+        <img src="{{ url_for('static', filename='img/spaceship.jpg' ) }}" />
+      </div>
+        <h3>this is memo page. What is regarding?</h3>
+    </article>
+
+    <form>
+  
+    </form>
+    
+
+    {% include 'include/footer.html' %}
+  </body>
+</html>

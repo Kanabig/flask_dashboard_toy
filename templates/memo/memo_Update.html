@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MEMO_SERVICE</title>
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/memo/memo.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    {% include 'memo/include/header.html' %} {% include 'memo/include/nav.html' %}
+
+
+    <form action="/memo/update" method="post">
+      <input type="number" min="0" max="2" name="memo_id" placeholder="수정할 번호 입력" required >
+      <textarea name="content" placeholder="enter new memo" required></textarea>
+      <button type="submit">modify</button>
+      <button type="reset">reset</button>
+    </form>
+    
+    {% include 'include/footer.html' %}
+  </body>
+</html>

@@ -12,11 +12,11 @@
 
     <article id="signup_wrap">
       <div class="signup_form">
-        <form action="/account/signup_confirm" method="POST" name="signup_form">
-          <input class="input_basic" type="text" , name="mId" , placeholder="id: " /> <br />
-          <input class="input_basic" type="password" , name="mPw" , placeholder="pw: " /> <br />
-          <input class="input_basic" type="email" , name="mMail" , placeholder="mail: " /> <br />
-          <input class="input_basic" type="text" , name="mPhone" , placeholder="phone: " /> <br />
+        <form action="{{ url_for('account.signup_confirm') }}" method="POST" name="signup_form">
+          <input class="input_basic" type="text" name="mId" placeholder="id: " /> <br />
+          <input class="input_basic" type="password" name="mPw" placeholder="pw: " /> <br />
+          <input class="input_basic" type="email" name="mMail" placeholder="mail: " /> <br />
+          <input class="input_basic" type="text" name="mPhone" placeholder="phone: " /> <br />
           <input class="input_button_basic_130" type="button" value="SIGN UP" onclick="signupForm()" />
           <input class="input_button_basic_130" type="reset" value="RESET" />
         </form>

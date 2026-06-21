@@ -1,0 +1,22 @@
+<div class="index">
+    <img src="{{ url_for('static', filename='img/note.jpg') }}" alt="노트 배경">
+        
+    <div class="left_note_overlay">
+        <h2 id="noteTitleOutput">제목 없음</h2>
+        <div id="noteContentOutput">여기에 내용이 표시됩니다.</div>
+    </div>
+
+   <div class="right_note_wrap">
+        <div class="input_area">
+            <input class="input_basic" type="text" name="mTitle" id="diaryTitleInput" placeholder="다이어리 제목">
+            <textarea class="input_basic" name="mdiary" id="diaryContentInput" placeholder="내용을 입력하세요..."></textarea>
+            <div class="button_wrap">
+                <input class="input_button_basic_130" type="button" value="SAVE" onclick="diaryform()">
+                <input class="input_button_basic_130" type="reset" value="RESET"> 
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    

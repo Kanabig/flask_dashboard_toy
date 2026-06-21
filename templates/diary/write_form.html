@@ -11,11 +11,11 @@
     {% include 'include/header.html' %} {% include 'diary/include/nav.html' %}
     
     <article>
-    <div class="index">
-      <img src="{{ url_for('static', filename='img/note.jpg') }}" alt="노트 배경">
-    </div>
+        {% include 'diary/include/diary_form.html' %}
     </article>
 
-    {% include 'include/footer.html' %}
+      {% include 'include/footer.html' %}
+
+  <script src="{{ url_for('static', filename='js/diary/diary.js') }}"></script>
   </body>
 </html>

@@ -9,3 +9,75 @@
 #div.diary_wrap a {
   padding: 0px 10px;
 }
+
+.index {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.index img {
+  width: 100%;
+  display: block;
+}
+
+/* 왼쪽 노트 출력 영역 */
+.left_note_overlay {
+  position: absolute;
+  top: 145px;
+  left: 220px;
+  width: 220px;
+  text-align: center;
+}
+
+#noteTitleOutput {
+  margin-bottom: 20px;
+}
+
+#noteContentOutput {
+  margin-top: 15px;
+  word-break: break-word;
+}
+
+/* 오른쪽 노트 입력 영역 */
+.right_note_wrap {
+  position: absolute;
+  top: 145px;
+  right: 220px;
+  width: 220px;
+  box-sizing: border-box;
+}
+
+.right_note_wrap input[type="text"],
+.right_note_wrap textarea {
+  width: 100%;
+  display: block;
+  margin-bottom: 15px;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.right_note_wrap textarea {
+  height: 250px;
+}
+
+/* 버튼 가로 배치 */
+.button_wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.button_wrap input {
+  flex: 1;
+  border-radius: 5px;
+  cursor: pointer;
+}
+

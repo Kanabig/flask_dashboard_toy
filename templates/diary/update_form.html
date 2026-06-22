@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diary Update</title>
+
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/diary/diary.css') }}" rel="stylesheet">
+</head>
+
+<body>
+
+{% include 'include/header.html' %}
+{% include 'diary/include/nav.html' %}
+
+<article>
+
+<div class="index">
+
+<form action="/diary/update_confirm" method="post">
+
+    <input
+        type="hidden"
+        name="idx"
+        value="{{ idx }}"
+    >
+
+    <p>Title</p>
+
+    <input
+        type="text"
+        name="mTitle"
+        value="{{ diary.title }}"
+    >
+
+    <br><br>
+
+    <p>Content</p>
+
+    <textarea
+        name="mContent"
+        rows="10"
+        cols="80"
+    >{{ diary.content }}</textarea>
+
+    <br><br>
+
+    <input
+        type="submit"
+        value="SAVE"
+    >
+
+</form>
+
+</div>
+
+</article>
+
+{% include 'include/footer.html' %}
+
+</body>
+</html>

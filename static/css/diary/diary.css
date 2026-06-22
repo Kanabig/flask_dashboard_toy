@@ -81,3 +81,19 @@
   cursor: pointer;
 }
 
+
+.left_note_overlay table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.left_note_overlay th,
+.left_note_overlay td {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.left_note_overlay th {
+    font-weight: bold;
+}
+

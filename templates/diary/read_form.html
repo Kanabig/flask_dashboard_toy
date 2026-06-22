@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diary Read</title>
+
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/diary/diary.css') }}" rel="stylesheet">
+</head>
+
+<body>
+
+{% include 'include/header.html' %}
+{% include 'diary/include/nav.html' %}
+
+<article>
+
+<div class="index">
+
+    <h2>DIARY LIST</h2>
+
+    <table>
+
+        {% for diary in diaries %}
+        <tr>
+
+            <td>{{ loop.index }}</td>
+
+            <td>
+                <a href="/diary/read_form?idx={{ loop.index0 }}">
+                    {{ diary.title }}
+                </a>
+            </td>
+
+            <td>{{ diary.reg_date }}</td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+            {% if selected_diary %}
+
+        <hr>
+
+        <div class="content_box">
+
+            <h3>Content</h3>
+
+            <p>
+                <strong>Title :</strong>
+                {{ selected_diary.title }}
+            </p>
+
+            <p>
+                <strong>Reg Date :</strong>
+                {{ selected_diary.reg_date }}
+            </p>
+
+            <hr>
+
+            <div class="diary_content">
+                {{ selected_diary.content }}
+            </div>
+
+            <br>
+
+            <a href="/diary/update_form?idx={{ idx }}">
+                <button>UPDATE</button>
+            </a>
+
+            <a href="/diary/delete_confirm?idx={{ idx }}">
+                <button>DELETE</button>
+            </a>
+
+        </div>
+
+        {% endif %}
+
+</div>
+
+</article>
+
+{% include 'include/footer.html' %}
+
+</body>
+</html>

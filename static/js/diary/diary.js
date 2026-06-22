@@ -14,6 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
 }); 
 
 function diaryform() {
-    document.diary_form.submit();
     alert('저장완료!')
+    document.diary_form.submit();
 }

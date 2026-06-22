@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Diary service</title>
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/diary/diary.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    {% include 'include/header.html' %} {% include 'diary/include/nav.html' %}
+    
+    <article>
+    <div class="index">
+     
+    </div>
+    </article>
+
+    {% include 'include/footer.html' %}
+  </body>
+</html>

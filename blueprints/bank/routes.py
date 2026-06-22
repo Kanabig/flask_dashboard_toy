@@ -2,12 +2,20 @@ from flask import Blueprint
 from flask import render_template
 from flask import session, request, redirect
 from datetime import datetime
+import json, os
 import uuid
 
 bank_bp = Blueprint('bank', __name__)
 
-# 테스트 데이터
-bankDb = {"1":{"accountNo":"1001", "password":"1234", "balance":50000}}
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+BANK_FILE = os.path.join(BASE_DIR, 'json', 'banks.json')
+
+with open(BANK_FILE, 'r', encoding='utf-8') as f:
+    bankDb = json.load(f)
+
+def save_bank():
+    with open(BANK_FILE, 'w', encoding='utf-8') as f:
+        json.dump(bankDb, f, ensure_ascii=False, indent=4)
 
 # 메인
 @bank_bp.route('/bank/', methods=['GET','POST'])
@@ -41,6 +49,8 @@ def bank():
 
         bankDb[memberId]={"accountNo":accountNo, "password":pw, "balance":0}
 
+        save_bank()
+
         return redirect('/bank/auth')
 
     return render_template('bank/create_account.html')
@@ -58,9 +68,38 @@ def deposit():
 
         sender = request.form.get('sender')
 
-        money = int(request.form.get('money'))
+        money = (request.form.get('money'))
 
         memo = request.form.get('memo')
+
+        if not sender:
+            return '''
+            <script>
+                alert("보낸 사람 이름을 입력해주세요");
+                history.back();
+            </script>
+            '''
+        
+        if not money:
+            return '''
+            <script>
+                alert("입금 금액을 입력해주세요");
+                history.back();
+            </script>
+            '''
+        
+        if not memo:
+            return '''
+            <script>
+                alert("입금 내용을 입력해주세요");
+                history.back();
+            </script>
+            '''
+        
+        try:
+            money = int(money)
+        except ValueError:
+            return "금액은 숫자만 입력해주세요"
 
         account['balance'] += money
 
@@ -69,6 +108,8 @@ def deposit():
             account['history']=[]
 
         account['history'].insert(0, {"type":"입금", "bank":bank, "sender":sender, "money":money, "memo":memo, "date":datetime.now().strftime("%Y.%m.%d %H:%M")})
+
+        save_bank()
 
         return redirect('/bank/')
 
@@ -82,8 +123,37 @@ def withdraw():
 
     if request.method == 'POST':
         receiver = request.form.get('receiver')
-        money = int(request.form.get('money'))
+        money = (request.form.get('money'))     
         memo = request.form.get('memo')
+
+        if not receiver:
+            return '''
+            <script>
+                alert("받는 사람을 입력해주세요");
+                history.back();
+            </script>
+            '''
+        
+        if not money:
+            return '''
+            <script>
+                alert("출금 금액을 입력해주세요");
+                history.back();
+            </script>
+            '''
+        
+        if not memo:
+            return '''
+            <script>
+                alert("출금 사유를 입력해주세요");
+                history.back();
+            </script>
+            '''
+        
+        try:
+            money = int(money)
+        except ValueError:
+            return "금액은 숫자만 입력해주세요"
 
         # 잔액 부족 체크 ← 추가함
         if account['balance'] < money:
@@ -97,6 +167,9 @@ def withdraw():
             account['history']=[]
 
         account['history'].insert(0, {"type":"출금", "receiver":receiver, "money":money, "memo":memo, "date":datetime.now().strftime("%Y.%m.%d %H:%M")})
+        
+        save_bank()
+        
         return redirect('/bank/')
 
     return render_template('bank/withdraw.html', account=account)
@@ -135,8 +208,45 @@ def send():
         bank = request.form.get('bank')
         receiver = request.form.get('receiver')
         accountNo = request.form.get('accountNo')
-        money = int(request.form.get('money'))
+        money = (request.form.get('money', '')).strip()
         memo = request.form.get('memo')
+
+        if not receiver:
+            return '''
+            <script>
+                alert("받는 사람을 입력해주세요");
+                history.back();
+            </script>
+            '''
+        
+        if not accountNo:
+            return '''
+            <script>
+                alert("계좌번호를 입력해주세요");
+                history.back();
+            </script>
+            '''
+        
+        if not money:
+            return '''
+            <script>
+                alert("금액을 입력해주세요");
+                history.back();
+            </script>
+            '''
+        
+        if not memo:
+            return '''
+            <script>
+                alert("보내는 내용을 입력해주세요");
+                history.back();
+            </script>
+            '''
+        
+        try:
+            money = int(money)
+        except ValueError:
+            return "금액은 숫자만 입력해주세요"
 
         if account['balance'] < money:
 
@@ -148,6 +258,8 @@ def send():
             account['history']=[]
 
         account['history'].insert(0, {"type":"송금", "bank":bank, "receiver":receiver, "accountNo":accountNo, "money":money, "memo":memo, "date":datetime.now().strftime("%Y.%m.%d %H:%M")})
+
+        save_bank()
 
         return redirect('/bank/')
 
